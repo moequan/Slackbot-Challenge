@@ -21,14 +21,6 @@
     "wordfilter": "^0.2.6"
   },
   "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/howdyai/botkit-starter-slack.git"
-  },
-  "bugs": {
-    "url": "https://github.com/howdyai/botkit-starter-slack/issues"
-  },
-  "homepage": "https://github.com/howdyai/botkit-starter-slack",
   "keywords": [
     "bots",
     "chatbots",

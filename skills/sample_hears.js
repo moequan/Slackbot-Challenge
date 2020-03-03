@@ -42,23 +42,23 @@ module.exports = function(controller) {
       bot.reply(message, 'I will repeat whatever you say.');
     }
   });
-  controller.hears(['^hello$'], 'direct_message,direct_mention', function(bot, message) {
+  controller.hears(['^hallo$'], 'direct_message,direct_mention', function(bot, message) {
     bot.reply(message, {
       attachments: [
         {
-          title: 'Do you want to watcha movie with me? (◑␣ ◑)',
+          title: 'Möchtest du einen Film schauen ?  (◑␣ ◑)',
           callback_id: 'movie_select',
           attachment_type: 'default',
           actions: [
             {
               name: 'yes',
-              text: 'Sure',
-              value: 'yaas',
+              text: 'Zeig mir einen Film',
+              value: 'movie',
               type: 'button'
             },
             {
               name: 'no',
-              text: 'Leave me alone machine!',
+              text: 'Nein,danke',
               value: 'nope',
               type: 'button'
             }
@@ -69,14 +69,14 @@ module.exports = function(controller) {
   });
   controller.on('interactive_message_callback', async function(bot, message) {
     const reply = message.actions[0].value;
-    if (reply === 'yaas') {
+    if (reply === 'movie') {
       //GET A MOVIE
       const url = 'https://movies-api-coral.now.sh/movies/random';
       const data = await (await fetch(url)).json();
-      bot.reply(message, `What about "${data.title}"`);
+      bot.reply(message, `Was hälst du von  "${data.title}"`);
       bot.reply(message, `${data.url}`);
     } else {
-      bot.reply(message, 'Cool, whatever, bye bye!!');
+      bot.reply(message, 'Ah okay, hab noch einen schönen Tag :)');
     }
   });
   /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
